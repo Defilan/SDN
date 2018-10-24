@@ -56,6 +56,10 @@ ipmo $helper
 DownloadAllFiles
 
 # Prepare POD infra Images
+if (!(Test-Path $BaseDir\InstallImages.ps1))
+{
+    Start-BitsTransfer https://raw.githubusercontent.com/Microsoft/SDN/master/Kubernetes/windows/InstallImages.ps1 -Destination c:\k\InstallImages.ps1
+}
 start powershell $BaseDir\InstallImages.ps1
 
 # Prepare Network & Start Infra services
